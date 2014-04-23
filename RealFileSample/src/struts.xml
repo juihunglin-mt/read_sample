@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default, json-default, jfreechart-default">
+		
+		<result-types>  
+         	<result-type name="result-message" class="ResultMessage" />  
+      	</result-types>
+		
+		<action name="content-save" class="ContentAction" method="saveRecord">
+			<result name="success" type="result-message">file-template-list</result>
+		</action>
+		<action name="content-update" class="ContentAction" method="updateRecord">
+			<result name="success" type="result-message">file-template-list</result>
+		</action>
+		<action name="content-delete" class="ContentAction" method="deleteRecord">
+			<result name="success" type="result-message">file-template-list</result>
+		</action>
+		<action name="content-all" class="ContentAction" method="allRecords"></action>
+		<action name="content-get" class="ContentAction" method="getRecord"></action>
+		
+		<action name="type-all" class="TypeAction" method="allRecords"></action>
+		<action name="type-active" class="TypeAction" method="activeRecords"></action>
+		<action name="type-get" class="TypeAction" method="getRecord"></action>
+		
+		<action name="vars-save" class="VarsAction" method="saveRecord">
+			<result name="success" type="result-message">file-template-vars?id=${#request.contentId}</result>
+		</action>
+		<action name="vars-update" class="VarsAction" method="updateRecord">
+			<result name="success" type="result-message">file-template-vars?id=${#request.contentId}</result>
+		</action>
+		<action name="vars-delete" class="VarsAction" method="deleteRecord">
+			<result name="success" type="result-message">file-template-vars?id=${#request.contentId}</result>
+		</action>
+		
+		<action name="vars-all" class="VarsAction" method="allRecords"></action>
+		<action name="vars-active" class="VarsAction" method="activeRecords"></action>
+		<action name="vars-get" class="VarsAction" method="getRecord"></action>
+		<action name="vars-by-cId" class="VarsAction" method="cIdRecords"></action>
+		
+		<action name="*" class="IndexAction" >
+			<result name="success">/WEB-INF/jsp/{1}.jsp</result>
+		</action>
+	</package>
+</struts>    

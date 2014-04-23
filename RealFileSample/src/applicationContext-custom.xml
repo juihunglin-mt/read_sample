@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+	
+	<bean id="ResultMessage" class="com.sample.action.ResultMessage" scope="prototype"></bean>
+	<bean id="IndexAction" class="com.sample.action.IndexAction" scope="prototype"></bean>
+	
+	<bean id="ContentAction" class="com.sample.action.ContentAction" scope="prototype">
+		<property name="typeDAO">
+			<ref bean="TypeDAO" />
+		</property>
+		<property name="contentDAO">
+			<ref bean="ContentDAO" />
+		</property>
+	</bean>
+	
+	<bean id="TypeAction" class="com.sample.action.TypeAction" scope="prototype">
+		<property name="typeDAO">
+			<ref bean="TypeDAO" />
+		</property>
+	</bean>
+	
+	<bean id="VarsAction" class="com.sample.action.VarsAction" scope="prototype">
+		<property name="contentDAO">
+			<ref bean="ContentDAO" />
+		</property>
+		<property name="varsDAO">
+			<ref bean="VarsDAO" />
+		</property>
+	</bean>
+	
+	
+
+</beans>
